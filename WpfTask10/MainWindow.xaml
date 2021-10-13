@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfTask10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTask10"
+        xmlns:vm="clr-namespace:WpfTask10.ViewModels"
+        xmlns:view="clr-namespace:WpfTask10.Views"
+        mc:Ignorable="d"
+        Title="Задание 10" Height="600" Width="660">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding Users}" SelectedIndex="{Binding ElementName=editor, Path=DataContext.Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ListView.DataContext>
+                <vm:UserListViewModel />
+            </ListView.DataContext>
+        </ListView>
+
+        <view:AddUserView Grid.Row="1" x:Name="editor" />
+    </Grid>
+</Window>
